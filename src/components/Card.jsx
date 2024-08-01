@@ -57,10 +57,12 @@ const Card = ({ data, reference, loading, onDelete, isAdmin }) => {
           <div className="footer absolute bottom-0 w-full left-0">
             <div className="flex items-center justify-between py-3  px-8  mb-3">
               <h5>{data.filesize}</h5>
-              <span className="w-7 h-7 bg-[--eye-bg] rounded-full flex items-center justify-center cursor-pointer  backdrop-blur-md hover:bg-[--accent-color] text-[--text-hover-color]">
+              <span
+                className="w-7 h-7 bg-[--eye-bg] rounded-full flex items-center justify-center cursor-pointer  backdrop-blur-md hover:bg-[--accent-color] text-[--text-hover-color]"
+                onClick={handleView}
+              >
                 <FaEye
                   size=".8rem"
-                  onClick={handleView}
                   aria-label="View Online"
                   title="View Online"
                 />
