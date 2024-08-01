@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root{
+  --accent-color:rgba(22,163,74,1);
+  --secondary-color:rgba(59,130,246,1);
+  --error-color: rgb(239 68 68) ;
+}
+
+body.dark{
+  --bg-color:rgb(39 39 42 / 1);
+  --text-color:white;
+  --text-hover-color:black;
+  --card-bg:rgb(24,24,27,0.9);
+  --eye-bg:rgb(82,82,91,1);
+}
+body.light{
+  --bg-color:rgb(196 196 203);
+  --text-color:black;
+  --text-hover-color:white;
+  --card-bg:rgba(255, 255, 255, 0.2);
+  --eye-bg:rgb(113 111 111 / 59%);
+}
+*{
+  font-family: "Poppins", sans-serif;
+}
+::selection{
+  color: rgb(232, 145, 47);
+}
+::-webkit-scrollbar{
+  display: none;
+}
+.card{
+  cursor: grab;
+}
