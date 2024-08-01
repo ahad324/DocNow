@@ -73,7 +73,7 @@ const Foreground = ({ isAdmin = false, handleAdminLogout }) => {
     >
       {isAdmin && (
         <span
-          className="absolute top-4 right-20 flex justify-center items-center flex-col cursor-pointer text-[--text-color] font-semibold hover:text-[--error-color]"
+          className="absolute top-4 right-20 flex justify-center items-center flex-col cursor-pointer text-[--text-color] font-semibold hover:text-[--error-color] z-10"
           onClick={handleAdminLogout}
         >
           <MdLogout size="1.6em" />
