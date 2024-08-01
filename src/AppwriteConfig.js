@@ -1,12 +1,12 @@
 import { Client, Account, Storage } from 'appwrite';
 
 const client = new Client()
-  .setEndpoint("https://cloud.appwrite.io/v1")
-  .setProject("66aa0dfb002f53cb76dc");
+  .setEndpoint(import.meta.env.VITE_APPWRITE_ENDPOINT)
+  .setProject(import.meta.env.VITE_APPWRITE_PROJECT_ID);
 
 const account = new Account(client);
 const storage = new Storage(client);
-const BUCKET_ID = "66aa2563000df08db453";
-const PROJECT_ID = "66aa0dfb002f53cb76dc";
+const BUCKET_ID = import.meta.env.VITE_APPWRITE_BUCKET_ID;
+const PROJECT_ID = import.meta.env.VITE_APPWRITE_PROJECT_ID;
 
 export { client, account, storage, BUCKET_ID, PROJECT_ID };
