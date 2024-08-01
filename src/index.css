@@ -27,7 +27,7 @@ body.light{
   font-family: "Poppins", sans-serif;
 }
 ::selection{
-  color: rgb(232, 145, 47);
+  color: var(--accent-color);
 }
 ::-webkit-scrollbar{
   display: none;

@@ -44,7 +44,7 @@ const Card = ({ data, reference, loading, onDelete, isAdmin }) => {
       whileDrag={{ scale: 1.1, cursor: "grabbing" }}
       dragMomentum={true}
       dragTransition={{ bounceStiffness: 200, bounceDamping: 7 }}
-      className="card shadow-custom relative flex-shrink-0 w-60 h-72 rounded-[45px] bg-[--card-bg] text-[--text-color] px-8 py-10 overflow-hidden backdrop-blur-md "
+      className="card shadow-custom relative flex-shrink-0 w-60 h-72 rounded-[45px] bg-[--card-bg] text-[--text-color] px-8 py-10 overflow-hidden backdrop-blur-md"
     >
       {loading ? (
         <Loader />
@@ -77,10 +77,10 @@ const Card = ({ data, reference, loading, onDelete, isAdmin }) => {
               )}
             </div>
             <div
-              className={`tag w-full py-4 bg-[--accent-color] flex items-center justify-center cursor-pointer`}
+              className={`tag w-full py-4 bg-[--accent-color] flex items-center justify-center cursor-pointer hover:text-[--text-hover-color]`}
               onClick={handleDownload}
             >
-              <h3 className="text-sm font-semibold hover:text-[--text-hover-color] flex justify-evenly items-center">
+              <h3 className="text-sm font-semibold flex justify-evenly items-center">
                 <p className="mr-1">Download Now</p>
                 <IoMdCloudDownload size="1.5em" />
               </h3>

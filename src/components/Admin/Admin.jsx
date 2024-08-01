@@ -4,7 +4,7 @@ import Foreground from "../Foreground";
 const Admin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -23,10 +23,10 @@ const Admin = () => {
   }
 
   return (
-    <div className="absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-[50%] flex flex-col items-center justify-center h-screen z-[3] rounded-lg w-full">
+    <div className="absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-[50%] flex flex-col items-center justify-center h-screen z-[3] w-full">
       <form
         onSubmit={handleLogin}
-        className="backdrop-blur-md border border-[--text-color] p-6 rounded shadow-custom"
+        className="backdrop-blur-md border border-[--text-color] rounded-3xl p-6  shadow-custom"
       >
         <h2 className="text-2xl mb-4 text-[--text-color] font-bold">
           Admin Login

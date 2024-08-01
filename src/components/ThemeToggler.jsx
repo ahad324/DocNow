@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "../styles/ThemeToggler.css";
 const ThemeToggler = () => {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
+  const [theme, setTheme] = useState(
+    localStorage.getItem("docs-theme") || "dark"
+  );
 
   useEffect(() => {
     document.body.className = theme;
-    localStorage.setItem("theme", theme);
+    localStorage.setItem("docs-theme", theme);
   }, [theme]);
 
   const handleThemeChange = (e) => {
