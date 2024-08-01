@@ -64,9 +64,9 @@ To get a local copy up and running, follow these steps:
 4.  **Create an .env file and add your Appwrite credentials:**
     
      ``` bash 
-     REACT_APP_PROJECT_ID=your_project_id
-    REACT_APP_ENDPOINT=your_appwrite_endpoint
-    REACT_APP_BUCKET_ID=your_bucket_id
+     VITE_PROJECT_ID=your_project_id
+    VITE_ENDPOINT=your_appwrite_endpoint
+    VITE_BUCKET_ID=your_bucket_id
       ```
     
 5.  **Start the development server:**
