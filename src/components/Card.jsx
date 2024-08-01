@@ -66,13 +66,11 @@ const Card = ({ data, reference, loading, onDelete, isAdmin }) => {
                 />
               </span>
               {isAdmin && (
-                <span className="w-7 h-7 bg-[--eye-bg] rounded-full flex items-center justify-center cursor-pointer  backdrop-blur-md hover:bg-[--accent-color] text-[--text-hover-color]">
-                  <FaTrashAlt
-                    size=".8rem"
-                    onClick={handleDelete}
-                    aria-label="Delete"
-                    title="Delete"
-                  />
+                <span
+                  className="w-7 h-7 bg-[--eye-bg] rounded-full flex items-center justify-center cursor-pointer  backdrop-blur-md hover:bg-[--accent-color] text-[--text-hover-color]"
+                  onClick={handleDelete}
+                >
+                  <FaTrashAlt size=".8rem" aria-label="Delete" title="Delete" />
                 </span>
               )}
             </div>
