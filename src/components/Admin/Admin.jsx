@@ -30,6 +30,7 @@ const Admin = () => {
       setPassword("");
       setloading(false);
     } catch (error) {
+      setloading(false);
       alert("Invalid Credentials!");
       throw new Error(error);
     }
