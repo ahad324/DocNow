@@ -1,31 +1,57 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Foreground from "../Foreground";
+import { account } from "../../AppwriteConfig";
 
 const Admin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setloading] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  useEffect(() => {
+    getAdminOnLoad();
+  }, []);
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    const adminEmail = "admin@gmail.com";
-    const adminPassword = "ahad324xv";
-
-    if (email === adminEmail && password === adminPassword) {
-      setIsAuthenticated(true);
-    } else {
-      alert("Invalid credentials");
+  const getAdminOnLoad = async () => {
+    try {
+      const accountDetails = await account.get();
+      setIsAuthenticated(accountDetails);
+    } catch (error) {
+      console.info(error);
     }
   };
 
+  const handleAdminLogin = async (e) => {
+    e.preventDefault();
+    try {
+      setloading(true);
+      const promise = await account.createEmailPasswordSession(email, password);
+      setIsAuthenticated(true);
+      setEmail("");
+      setPassword("");
+      setloading(false);
+    } catch (error) {
+      alert("Invalid Credentials!");
+      throw new Error(error);
+    }
+  };
+  const handleAdminLogout = async () => {
+    await account.deleteSession("current");
+    setIsAuthenticated(null);
+  };
+
   if (isAuthenticated) {
-    return <Foreground isAdmin={isAuthenticated} />;
+    return (
+      <Foreground
+        isAdmin={isAuthenticated}
+        handleAdminLogout={handleAdminLogout}
+      />
+    );
   }
 
   return (
     <div className="absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-[50%] flex flex-col items-center justify-center h-screen z-[3] w-full">
       <form
-        onSubmit={handleLogin}
+        onSubmit={handleAdminLogin}
         className="backdrop-blur-md border border-[--text-color] rounded-3xl p-6  shadow-custom"
       >
         <h2 className="text-2xl mb-4 text-[--text-color] font-bold">
@@ -35,6 +61,8 @@ const Admin = () => {
           type="email"
           placeholder="Email"
           value={email}
+          name="email"
+          autoComplete="email"
           onChange={(e) => setEmail(e.target.value)}
           className="mb-3 p-2 border rounded w-full"
           required
@@ -43,15 +71,16 @@ const Admin = () => {
           type="password"
           placeholder="Password"
           value={password}
+          name="password"
           onChange={(e) => setPassword(e.target.value)}
           className="mb-3 p-2 border rounded w-full"
           required
         />
         <button
           type="submit"
-          className="bg-[--secondary-color] text-[--text-color] py-2 rounded w-full font-semibold"
+          className="shadow-custom transition-colors bg-[--secondary-color] text-[--text-color] py-2 rounded w-full font-semibold hover:bg-[--secondary-color-hover]"
         >
-          Login
+          {loading ? "Loggin in..." : "Login"}
         </button>
       </form>
     </div>

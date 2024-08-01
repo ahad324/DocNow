@@ -48,7 +48,7 @@ const UploadFileButton = ({ onFileUpload }) => {
   ) : (
     <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 flex justify-between items-center flex-col w-full">
       <label className="cursor-pointer">
-        <span className="shadow-custom text-[--text-color] bg-[--secondary-color] transition-all hover:bg-blue-700 px-4 py-2 rounded">
+        <span className="shadow-custom text-[--text-color] bg-[--secondary-color] transition-colors hover:bg-[--secondary-color-hover] px-4 py-2 rounded">
           Upload File
         </span>
         <input

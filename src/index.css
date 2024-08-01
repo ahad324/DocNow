@@ -7,8 +7,8 @@
   --accent-color:rgba(22,163,74,1);
   --secondary-color:rgba(59,130,246,1);
   --error-color: rgb(239 68 68) ;
+  --secondary-color-hover:rgb(29,78,216,1);
 }
-
 body.dark{
   --bg-color:rgb(39 39 42 / 1);
   --text-color:white;

@@ -23,6 +23,7 @@ const ThemeToggler = () => {
       <input
         className="input"
         type="checkbox"
+        name="ThemeToggler"
         checked={theme === "dark"}
         onChange={handleThemeChange}
       />

@@ -4,8 +4,9 @@ import { client, storage, BUCKET_ID, PROJECT_ID } from "../AppwriteConfig.js";
 import UploadFileButton from "./UploadFileButton";
 import Empty from "../assets/empty.svg";
 import Loader from "./Loader.jsx";
+import { MdLogout } from "react-icons/md";
 
-const Foreground = ({ isAdmin = false }) => {
+const Foreground = ({ isAdmin = false, handleAdminLogout }) => {
   const ref = useRef();
   const [loading, setloading] = useState(false);
   const [data, setData] = useState([]);
@@ -32,7 +33,7 @@ const Foreground = ({ isAdmin = false }) => {
 
     setTimeout(() => {
       setloading(false);
-    }, 800);
+    }, 500);
 
     // Setting up for Realtime-Updates
     const unsubscribe = client.subscribe("files", (response) => {
@@ -70,6 +71,15 @@ const Foreground = ({ isAdmin = false }) => {
       ref={ref}
       className="fixed top-0 left-0 z-[3] w-full h-full flex justify-center items-center gap-10 flex-wrap p-5 overflow-auto"
     >
+      {isAdmin && (
+        <span
+          className="absolute top-4 right-20 flex justify-center items-center flex-col cursor-pointer text-[--text-color] font-semibold hover:text-[--error-color]"
+          onClick={handleAdminLogout}
+        >
+          <MdLogout size="1.6em" />
+          <p className="text-xs">Logout</p>
+        </span>
+      )}
       {loading ? (
         <Loader />
       ) : data.length > 0 ? (

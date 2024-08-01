@@ -4,6 +4,7 @@ import Background from "./components/Background";
 import Foreground from "./components/Foreground";
 import Author from "./components/Author";
 import ThemeToggler from "./components/ThemeToggler";
+import Error from "./components/Error/Error";
 
 import Admin from "./components/Admin/Admin";
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Foreground />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="*" element={<Error />} />
         </Routes>
         <Author />
       </div>

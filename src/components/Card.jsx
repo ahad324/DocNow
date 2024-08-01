@@ -58,26 +58,30 @@ const Card = ({ data, reference, loading, onDelete, isAdmin }) => {
             <div className="flex items-center justify-between py-3  px-8  mb-3">
               <h5>{data.filesize}</h5>
               <span
-                className="w-7 h-7 bg-[--eye-bg] rounded-full flex items-center justify-center cursor-pointer  backdrop-blur-md hover:bg-[--accent-color] text-[--text-hover-color]"
+                className="w-7 h-7 bg-[--eye-bg] rounded-full shadow-custom transition-colors flex items-center justify-center cursor-pointer  backdrop-blur-md hover:bg-[--accent-color] text-[--text-hover-color]"
                 onClick={handleView}
               >
                 <FaEye
-                  size=".8rem"
+                  size="1rem"
                   aria-label="View Online"
                   title="View Online"
                 />
               </span>
               {isAdmin && (
                 <span
-                  className="w-7 h-7 bg-[--eye-bg] rounded-full flex items-center justify-center cursor-pointer  backdrop-blur-md hover:bg-[--accent-color] text-[--text-hover-color]"
+                  className="w-7 h-7 bg-[--eye-bg] rounded-full shadow-custom transition-colors flex items-center justify-center cursor-pointer  backdrop-blur-md hover:bg-[--accent-color] text-[--text-hover-color]"
                   onClick={handleDelete}
                 >
-                  <FaTrashAlt size=".8rem" aria-label="Delete" title="Delete" />
+                  <FaTrashAlt
+                    size="1rem"
+                    aria-label="Delete"
+                    title="Delete File"
+                  />
                 </span>
               )}
             </div>
             <div
-              className={`tag w-full py-4 bg-[--accent-color] flex items-center justify-center cursor-pointer hover:text-[--text-hover-color]`}
+              className={`tag w-full py-4 bg-[--accent-color] transition-colors flex items-center justify-center cursor-pointer hover:text-[--text-hover-color]`}
               onClick={handleDownload}
             >
               <h3 className="text-sm font-semibold flex justify-evenly items-center">
