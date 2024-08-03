@@ -5,7 +5,7 @@
 </div>
 
 <p align="center">
-    Welcome to <strong>My Awesome React App</strong>! 🚀 This application allows users to upload and download files publicly, featuring a clean and modern design, responsive components, and a secure admin interface. Below, you'll find details on how to get started, the technologies used, and more.
+    Welcome to <strong>Docs-Share</strong>! 🚀 This application allows users to upload and download files publicly, featuring a clean and modern design, responsive components, and a secure admin interface. Below, you'll find details on how to get started, the technologies used, and more.
 </p>
 
 ## 📋 Table of Contents
