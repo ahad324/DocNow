@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { storage, BUCKET_ID, PROJECT_ID } from "../AppwriteConfig.js";
+import { storage, BUCKET_ID, PROJECT_ID, ID } from "../AppwriteConfig.js";
 import Loader from "./Loader.jsx";
 
 const MAX_FILE_SIZE_MB = 50; // Maximum file size in MB
@@ -22,7 +22,7 @@ const UploadFileButton = ({ onFileUpload }) => {
     setIsUploading(true);
 
     try {
-      const response = await storage.createFile(BUCKET_ID, "unique()", file);
+      const response = await storage.createFile(BUCKET_ID, ID.unique(), file);
       const fileData = {
         id: response.$id,
         name: response.name,
