@@ -11,7 +11,7 @@
 ## 📋 Table of Contents
 
 - [Features](#-features)
-- [UseCases](#-usecases)
+- [UseCases](#-use-cases)
 - [Demo](#-demo)
 - [Technologies Used](#-technologies-used)
 - [Installation](#-installation)
