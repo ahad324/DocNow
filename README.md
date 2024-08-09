@@ -29,7 +29,7 @@
 
 ## 🎥 Demo
 
-Check out the live demo of the application [here](https://soon-available.com).
+Check out the live demo of the application [here](https://docs-share.netlify.app/).
 
 ## 🛠️ Technologies Used
 
