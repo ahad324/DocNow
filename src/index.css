@@ -10,11 +10,13 @@
   --secondary-color-hover:rgb(29,78,216,1);
 }
 body.dark{
-  --bg-color:rgb(39 39 42 / 1);
+  --bg-color:rgb(31,41,55,1);
   --text-color:white;
   --text-hover-color:black;
   --card-bg:rgb(24,24,27,0.9);
   --eye-bg:rgb(82,82,91,1);
+  --author-bg:whitesmoke;
+  --author-text-color:black;
 }
 body.light{
   --bg-color:rgb(196 196 203);
@@ -22,6 +24,8 @@ body.light{
   --text-hover-color:white;
   --card-bg:rgba(255, 255, 255, 0.2);
   --eye-bg:rgb(113 111 111 / 59%);
+  --author-bg:rgb(31,41,55,1);
+  --author-text-color:whitesmoke;
 }
 *{
   font-family: "Poppins", sans-serif;
