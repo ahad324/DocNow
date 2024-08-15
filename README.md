@@ -1,4 +1,4 @@
-<h1 align="center">📜 <strong>Docs - Share</strong> 🤝</h1>
+<h1 align="center">📜 <strong>Doc Now</strong> 🤝</h1>
 
 <div align="center">
     <img src="https://skillicons.dev/icons?i=react,vite,tailwind,css,appwrite" alt="Tech Stack" />
