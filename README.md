@@ -5,7 +5,7 @@
 </div>
 
 <p align="center">
-    Welcome to <strong>Docs-Share</strong>! 🚀 This application allows users to upload and download files publicly, featuring a clean and modern design, responsive components, and a secure admin interface. Below, you'll find details on how to get started, the technologies used, and more.
+    Welcome to <strong>Doc Now</strong>! 🚀 This application allows users to upload and download files publicly, featuring a clean and modern design, responsive components, and a secure admin interface. Below, you'll find details on how to get started, the technologies used, and more.
 </p>
 
 ## 📋 Table of Contents
@@ -45,7 +45,7 @@ You’re in an exam, and only one person knows how to solve a particular problem
 
 ## 🎥 Demo
 
-Check out the live demo of the application [here](https://docs-share.netlify.app/).
+Check out the live demo of the application [here](https://docnow.netlify.app/).
 
 ## 🛠️ Technologies Used
 
@@ -61,13 +61,13 @@ To get a local copy up and running, follow these steps:
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/ahad324/Docs-share.git
+    git clone https://github.com/ahad324/DocNow.git
     ```
 
 2. **Navigate to the project directory:**
 
     ```bash
-    cd Docs-share
+    cd DocNow
     ```
 
 3. **Install dependencies:**
