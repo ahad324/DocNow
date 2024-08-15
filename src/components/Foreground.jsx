@@ -5,25 +5,40 @@ import UploadFileButton from "./UploadFileButton";
 import Empty from "../assets/empty.svg";
 import Loader from "./Loader.jsx";
 import { MdLogout } from "react-icons/md";
+import { calculation } from "../utils/utils.js";
+import { toast } from "react-toastify";
 
+const TOTAL_STORAGE = 2147483648; // Total Storage In Bytes
 const Foreground = ({ isAdmin = false, handleAdminLogout }) => {
   const ref = useRef();
   const [loading, setloading] = useState(false);
   const [data, setData] = useState([]);
   const [deletingFileId, setDeletingFileId] = useState(null);
+  const [storageOccupied, setStorageOccupied] = useState(0);
 
   useEffect(() => {
     setloading(true);
     const fetchFiles = async () => {
       try {
         const response = await storage.listFiles(BUCKET_ID);
-        const filesData = response.files.map((file) => ({
-          id: file.$id,
-          desc: file.name,
-          filesize: `${(file.sizeOriginal / 1024).toFixed(2)} KB`,
-          url: `https://cloud.appwrite.io/v1/storage/buckets/${BUCKET_ID}/files/${file.$id}/view?project=${PROJECT_ID}`,
-        }));
+        const filesData = response.files.map((file) => {
+          const { value, unit } = calculation(file.sizeOriginal); // Deconstruct value and unit
+          return {
+            id: file.$id,
+            desc: file.name,
+            filesize: `${value} ${unit}`, // Format the size with value and unit
+            downloadUrl: `https://cloud.appwrite.io/v1/storage/buckets/${BUCKET_ID}/files/${file.$id}/download?project=${PROJECT_ID}`,
+            viewUrl: `https://cloud.appwrite.io/v1/storage/buckets/${BUCKET_ID}/files/${file.$id}/view?project=${PROJECT_ID}`,
+          };
+        });
         setData(filesData);
+
+        // Calculate storage usage
+        const totalSize = response.files.reduce(
+          (acc, file) => acc + file.sizeOriginal,
+          0
+        );
+        setStorageOccupied(totalSize); // Convert bytes to MB
       } catch (error) {
         console.error("Error fetching files:", error);
       }
@@ -31,18 +46,17 @@ const Foreground = ({ isAdmin = false, handleAdminLogout }) => {
 
     fetchFiles();
 
-    setTimeout(() => {
-      setloading(false);
-    }, 500);
+    // setTimeout(() => {
+    setloading(false);
+    // }, 500);
 
     // Setting up for Realtime-Updates
     const unsubscribe = client.subscribe("files", (response) => {
-      if (response.events.includes(`buckets.${BUCKET_ID}.files.*.create`)) {
-        fetchFiles(); // Refresh file list on new upload
-      } else if (
+      if (
+        response.events.includes(`buckets.${BUCKET_ID}.files.*.create`) ||
         response.events.includes(`buckets.${BUCKET_ID}.files.*.delete`)
       ) {
-        fetchFiles();
+        fetchFiles(); // Refresh file list on new upload
       }
     });
 
@@ -50,17 +64,14 @@ const Foreground = ({ isAdmin = false, handleAdminLogout }) => {
       unsubscribe();
     };
   }, []);
-
-  const handleFileUpload = (file) => {
-    setData([...data, file]);
-  };
-
   const handleFileDelete = async (fileId) => {
     setDeletingFileId(fileId);
     try {
       await storage.deleteFile(BUCKET_ID, fileId);
       setData(data.filter((item) => item.id !== fileId));
+      toast.success("Files deleted successfully!");
     } catch (error) {
+      toast.success("Failed to delete file.Please try again.");
       console.error("Error deleting file:", error);
     }
     setDeletingFileId(null);
@@ -69,16 +80,34 @@ const Foreground = ({ isAdmin = false, handleAdminLogout }) => {
   return (
     <div
       ref={ref}
-      className="fixed top-0 left-0 z-[3] w-full h-full flex justify-center items-center gap-10 flex-wrap p-5 overflow-auto"
+      className="absolute top-0 left-0 z-[3] w-full h-full flex justify-center items-center gap-10 flex-wrap p-5 overflow-auto py-20"
     >
       {isAdmin && (
-        <span
-          className="absolute top-4 right-20 flex justify-center items-center flex-col cursor-pointer text-[--text-color] font-semibold hover:text-[--error-color] z-10"
-          onClick={handleAdminLogout}
-        >
-          <MdLogout size="1.6em" />
-          <p className="text-xs">Logout</p>
-        </span>
+        <section className="fixed top-0 flex justify-between w-full flex-row-reverse pl-4 pr-14 xs:px-16 py-2 bg-[--secondary-color] z-[3] shadow-custom rounded-b-3xl border-b-4 border-[--text-color]">
+          <span
+            className="right-20 flex justify-center items-center flex-col cursor-pointer text-[--default-text-color] font-semibold hover:text-[--error-color] z-10"
+            onClick={handleAdminLogout}
+          >
+            <MdLogout size="1.6em" />
+            <p className="text-xs">Logout</p>
+          </span>
+          {(() => {
+            const storageOccupiedCalculation = calculation(storageOccupied);
+            const totalStorageCalculation = calculation(TOTAL_STORAGE);
+
+            return (
+              <div className=" bg-black text-[--default-text-color] p-1 xs:p-3 rounded-lg border shadow-custom flex justify-center items-center text-sm xs:text-lg">
+                <span className="flex font-semibold">
+                  <h2 className="mr-1 xs:mr-2">Storage: </h2>
+                  <p>
+                    {`${storageOccupiedCalculation.value} ${storageOccupiedCalculation.unit}/`}
+                    {`${totalStorageCalculation.value} ${totalStorageCalculation.unit}`}
+                  </p>
+                </span>
+              </div>
+            );
+          })()}
+        </section>
       )}
       {loading ? (
         <Loader />
@@ -101,7 +130,10 @@ const Foreground = ({ isAdmin = false, handleAdminLogout }) => {
           <img src={Empty} alt="Empty Canvas" width="50%" />
         </div>
       )}
-      <UploadFileButton onFileUpload={handleFileUpload} />
+      <UploadFileButton
+        TOTAL_STORAGE={TOTAL_STORAGE}
+        storageOccupied={storageOccupied}
+      />
     </div>
   );
 };

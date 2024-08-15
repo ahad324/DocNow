@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../styles/ThemeToggler.css";
 const ThemeToggler = () => {
   const [theme, setTheme] = useState(
-    localStorage.getItem("docs-theme") || "dark"
+    localStorage.getItem("docs-theme") || "light"
   );
 
   useEffect(() => {

@@ -6,6 +6,9 @@ import Author from "./components/Author";
 import ThemeToggler from "./components/ThemeToggler";
 import Error from "./components/Error/Error";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import Admin from "./components/Admin/Admin";
 function App() {
   return (
@@ -19,6 +22,7 @@ function App() {
           <Route path="*" element={<Error />} />
         </Routes>
         <Author />
+        <ToastContainer />
       </div>
     </Router>
   );

@@ -5,9 +5,10 @@
 @tailwind utilities;
 :root{
   --accent-color:rgba(22,163,74,1);
-  --secondary-color:rgba(59,130,246,1);
+  --secondary-color:rgba(67,56,202,1);
   --error-color: rgb(239 68 68) ;
-  --secondary-color-hover:rgb(29,78,216,1);
+  --secondary-color-hover:rgb(79,70,229,1);
+  --default-text-color:whitesmoke
 }
 body.dark{
   --bg-color:rgb(31,41,55,1);
@@ -26,6 +27,9 @@ body.light{
   --eye-bg:rgb(113 111 111 / 59%);
   --author-bg:rgb(31,41,55,1);
   --author-text-color:whitesmoke;
+}
+body{
+  background: var(--bg-color);
 }
 *{
   font-family: "Poppins", sans-serif;
