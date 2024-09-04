@@ -102,14 +102,14 @@ const CreateFileModal = ({
               <button
                 type="button"
                 onClick={handleFileCreation}
-                className="bg-[--secondary-color] p-2 rounded"
+                className="bg-[--secondary-color] p-2 rounded hover:bg-[--secondary-color-hover]"
               >
                 Create File
               </button>
               <button
                 type="button"
                 onClick={onClose}
-                className="bg-gray-600  p-2 rounded"
+                className="bg-gray-600  p-2 rounded hover:bg-gray-500"
               >
                 Cancel
               </button>
