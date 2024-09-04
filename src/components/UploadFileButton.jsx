@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { storage, BUCKET_ID, PROJECT_ID, ID } from "../AppwriteConfig.js";
+import { storage, BUCKET_ID, ID } from "../AppwriteConfig.js";
 import Loader from "./Loader.jsx";
 import { calculation } from "../utils/utils.js";
 import { toast } from "react-toastify";
