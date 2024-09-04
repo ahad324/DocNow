@@ -61,7 +61,7 @@ const CreateFileModal = ({
       <div className="bg-[--bg-color] p-8 rounded-lg shadow-custom w-fit text-[--text-color] border-2 border-[--text-color]">
         <h2 className="text-xl font-semibold mb-4">Create File</h2>
         {isUploading ? (
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center flex-col">
             <Loader /> <p className="ml-2">Creating file...</p>
           </div>
         ) : (
@@ -72,7 +72,7 @@ const CreateFileModal = ({
                 type="text"
                 value={fileName}
                 onChange={(e) => setFileName(e.target.value)}
-                className="border p-2 w-full rounded"
+                className="border p-2 w-full text-black rounded"
               />
             </div>
             <div className="mb-4">
@@ -81,7 +81,7 @@ const CreateFileModal = ({
                 type="text"
                 value={fileExtension}
                 onChange={(e) => setFileExtension(e.target.value)}
-                className="border border-gray-300 p-2 w-full rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="border text-black border-gray-300 p-2 w-full rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="e.g., pdf, docx, txt"
               />
               <p className="text-xs text-red-500 mt-1">
@@ -94,7 +94,7 @@ const CreateFileModal = ({
               <textarea
                 value={fileContent}
                 onChange={(e) => setFileContent(e.target.value)}
-                className="border p-2 w-full rounded"
+                className="border p-2 w-full rounded text-black"
                 rows="4"
               />
             </div>
