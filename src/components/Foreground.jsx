@@ -7,6 +7,7 @@ import Loader from "./Loader.jsx";
 import { MdLogout } from "react-icons/md";
 import { calculation } from "../utils/utils.js";
 import { toast } from "react-toastify";
+import CreateFileButton from "./CreateFileButton";
 
 const TOTAL_STORAGE = 2147483648; // Total Storage In Bytes
 const Foreground = ({ isAdmin = false, handleAdminLogout }) => {
@@ -131,6 +132,10 @@ const Foreground = ({ isAdmin = false, handleAdminLogout }) => {
         </div>
       )}
       <UploadFileButton
+        TOTAL_STORAGE={TOTAL_STORAGE}
+        storageOccupied={storageOccupied}
+      />
+      <CreateFileButton
         TOTAL_STORAGE={TOTAL_STORAGE}
         storageOccupied={storageOccupied}
       />
