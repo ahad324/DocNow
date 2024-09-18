@@ -13,8 +13,8 @@ const CreateFileModal = ({
   storageOccupied,
 }) => {
   const [isUploading, setIsUploading] = useState(false);
-  const [fileName, setFileName] = useState("");
-  const [fileExtension, setFileExtension] = useState("");
+  const [fileName, setFileName] = useState("sample");
+  const [fileExtension, setFileExtension] = useState("txt");
   const [fileContent, setFileContent] = useState("");
 
   const handleFileCreation = async () => {
