@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import Card from "./Card";
+import InstructionsModal from "./InstructionsModal";
 import { client, storage, BUCKET_ID, PROJECT_ID } from "../AppwriteConfig.js";
 import UploadFileButton from "./UploadFileButton";
 import Empty from "../assets/empty.svg";
@@ -16,6 +17,7 @@ const Foreground = ({ isAdmin = false, handleAdminLogout }) => {
   const [data, setData] = useState([]);
   const [deletingFileId, setDeletingFileId] = useState(null);
   const [storageOccupied, setStorageOccupied] = useState(0);
+  const [isInstructionsOpen, setIsInstructionsOpen] = useState(false);
 
   useEffect(() => {
     setloading(true);
@@ -81,8 +83,18 @@ const Foreground = ({ isAdmin = false, handleAdminLogout }) => {
   return (
     <div
       ref={ref}
-      className="absolute top-0 left-0 z-[3] w-full h-full flex justify-center items-center gap-10 flex-wrap p-5 overflow-auto py-20"
+      className="absolute top-0 left-0 z-[2] w-full h-full flex justify-center items-center gap-10 flex-wrap p-5 overflow-auto py-20"
     >
+      <button
+        onClick={() => setIsInstructionsOpen(true)}
+        className="absolute top-4 left-4 bg-[--secondary-color] border-2 text-sm border-[--text-color] rounded-lg text-[--default-text-color] font-bold py-2 px-2 hover:bg-[--secondary-color-hover] transition"
+      >
+        Instructions
+      </button>
+      <InstructionsModal
+        isOpen={isInstructionsOpen}
+        onClose={() => setIsInstructionsOpen(false)}
+      />
       {isAdmin && (
         <section className="fixed top-0 flex justify-between w-full flex-row-reverse pl-4 pr-14 xs:px-16 py-2 bg-[--secondary-color] z-[3] shadow-custom rounded-b-3xl border-b-4 border-[--text-color]">
           <span

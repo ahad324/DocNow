@@ -19,7 +19,7 @@ const ThemeToggler = () => {
   };
 
   return (
-    <label className="theme fixed right-3 top-3 z-10">
+    <label className="theme fixed right-3 top-3 z-[3]">
       <input
         className="input"
         type="checkbox"
