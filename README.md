@@ -27,14 +27,17 @@
 - 🖼️ **Responsive Design**: Fully responsive and mobile-friendly.
 - 🌐 **SEO Optimized**: Enhanced with SEO best practices for better search engine ranking.
 - 🎨 **Smooth Animations**: Utilizes Framer Motion for fluid drag-and-drop animations.
+
 ## 📊 **Use Cases**
 
 ### **Scenario 1: The Classroom Conundrum**
-Your lab teacher has just assigned a challenging task, and suddenly, everyone is stumped—except for one person! 😱 This creates a dilemma for the entire class. But don’t worry, there’s a simple solution! The student who understands the task can easily upload their file here, allowing everyone in the class to access it in just seconds. ⏱️✨ 
+
+Your lab teacher has just assigned a challenging task, and suddenly, everyone is stumped—except for one person! 😱 This creates a dilemma for the entire class. But don’t worry, there’s a simple solution! The student who understands the task can easily upload their file here, allowing everyone in the class to access it in just seconds. ⏱️✨
 
 > **Note**: Since code files are typically just a few kilobytes in size, you won’t have to worry about long upload or download times. 🚀 And it gets even better—you can upload any type of file, making this platform versatile for all your needs! 📂💻
 
 ### **Scenario 2: The Exam Dilemma**
+
 You’re in an exam, and only one person knows how to solve a particular problem. 🤔 This platform can be a lifesaver in that situation too! 🙌
 
 ---
@@ -60,35 +63,31 @@ To get a local copy up and running, follow these steps:
 
 1. **Clone the repository:**
 
-    ```bash
-    git clone https://github.com/ahad324/DocNow.git
-    ```
-
+   ```bash
+   git clone https://github.com/ahad324/DocNow.git
+   ```
 2. **Navigate to the project directory:**
 
-    ```bash
-    cd DocNow
-    ```
-
+   ```bash
+   cd DocNow
+   ```
 3. **Install dependencies:**
 
-    ```bash
-    npm install
-    ```
-
+   ```bash
+   npm install
+   ```
 4. **Create an .env file and add your Appwrite credentials:**
 
-    ```bash
-    VITE_PROJECT_ID=your_project_id
-    VITE_ENDPOINT=your_appwrite_endpoint
-    VITE_BUCKET_ID=your_bucket_id
-    ```
-
+   ```bash
+   VITE_APPWRITE_PROJECT_ID=your_project_id
+   VITE_APPWRITE_ENDPOINT=your_appwrite_endpoint
+   VITE_APPWRITE_BUCKET_ID=your_bucket_id
+   ```
 5. **Start the development server:**
 
-    ```bash
-    npm run dev
-    ```
+   ```bash
+   npm run dev
+   ```
 
 ## 🚀 Usage
 

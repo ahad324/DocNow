@@ -13,11 +13,12 @@ const CreateFileButton = ({ TOTAL_STORAGE, storageOccupied }) => {
     <>
       <button
         onClick={handleOpenModal}
-        className="fixed bottom-5 left-4 flex justify-evenly items-center shadow-custom text-[--default-text-color] bg-[--accent-color] border-2 transition-colors hover:bg-[--secondary-color-hover] p-1 rounded-lg text-lg  border-[--text-color] hover:bg-green-700"
+        className="fixed bottom-5 left-4 flex items-center w-10 overflow-hidden whitespace-nowrap transition-all duration-300 ease-in-out bg-[--accent-color] text-[--default-text-color] border-2 border-[--text-color] p-2 rounded-lg shadow-custom hover:w-40 hover:bg-[--secondary-color-hover]"
       >
-        <MdCreateNewFolder size="1.2em" className="mr-1" />
-        Create File
+        <MdCreateNewFolder size="1.2em" className="min-w-[1.2em]" />
+        <span className="ml-2 font-medium">Create File</span>
       </button>
+
       <CreateFileModal
         isOpen={isModalOpen}
         onClose={handleCloseModal}
